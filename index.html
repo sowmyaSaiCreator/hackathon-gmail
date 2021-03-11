@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Gmail API Quickstart</title>
+  <title>Gmail App</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
@@ -69,8 +69,22 @@
     }
 
     body {
-     /* background-color: #CCCCCC;*/
+      /* background-color: #CCCCCC;*/
       position: relative;
+    }
+
+    .pointerClass tr {
+      cursor: pointer;
+    }
+
+    table {
+      border-left: 2px solid white;
+    }
+
+    .pad10 {
+      padding: 10px;
+      margin: 10px;
+      width: 150px;
     }
   </style>
 </head>
@@ -92,9 +106,9 @@
   <div class="container-fluid " id="container">
 
     <div class="row">
-      <div class="col-2 pr-0 bg-light">
+      <div class="col-2 pr-0 bg-dark">
         <div>
-          <button class="btn" id="composeBtn" data-target="#composeModal" data-toggle="modal">
+          <button class="btn btn-danger pad10" id="composeBtn" data-target="#composeModal" data-toggle="modal">
             <span class="mr10">
               <i class="fa fa-plus font30" aria-hidden="true"></i>
             </span>
@@ -102,9 +116,7 @@
           </button>
         </div>
         <div>
-
-
-          <button class="btn" onclick=" displayMails();">
+          <button class="btn btn-danger pad10" onclick=" displayMails();">
             <span class="mr10">
               <i class="fa fa-window-maximize font30" aria-hidden="true"></i>
             </span>
@@ -112,13 +124,13 @@
           </button>
         </div>
         <div>
-          <button class="btn" onclick="displayMails('SENT');">
+          <button class="btn btn-danger pad10" onclick="displayMails('SENT');">
             <span class="mr10"><i class="fa fa-angle-double-right font30" aria-hidden="true"></i></span>
             <span class="posRT">Sent</span>
           </button>
         </div>
         <div>
-          <button class="btn" onclick="displayMails('DRAFT');">
+          <button class="btn btn-danger pad10" onclick="displayMails('DRAFT');">
             <span class="mr10">
               <i class="fa fa-file font30" aria-hidden="true"></i>
             </span>

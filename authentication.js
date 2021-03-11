@@ -16,6 +16,7 @@ var authorizeButton = document.getElementById("authorize_button");
 var signoutButton = document.getElementById("signout_button");
 var container = document.getElementById("container");
 var gMail = document.getElementById("gMail");
+var loader = document.getElementById("loader");
 
 /**
  *  On load, calledgMail to load the auth2 library and API client library.
@@ -120,6 +121,9 @@ function listLabels() {
 }
 
 function displayMails(label) {
+    loader.style.display = "block";
+    document.body.bgColor="#CCCCCC";
+
     var tbody = document.getElementById("tbody");
     tbody.innerHTML = "";
     if (!label) {
@@ -148,7 +152,7 @@ function displayMails(label) {
                 var messageRequest = gapi.client.gmail.users.messages.get({
                     userId: "me",
                     id: element.id,
-                   // fields:"internalDate"
+                    // fields:"internalDate"
                 });
 
                 if (label == "CATEGORY_PERSONAL")
@@ -173,6 +177,9 @@ function displayMails(label) {
     });
 }
 function constructMailData(result) {
+    loader.style.display = "none";
+    document.body.bgColor="none";
+
     var tbody = document.getElementById("tbody");
     var row = `<tr>
   <td>${getHeader(result.payload.headers, "From")}</td>
@@ -182,8 +189,12 @@ function constructMailData(result) {
     tbody.innerHTML += row;
 }
 function constructDraftData(result) {
+    loader.style.display = "none";
+    document.body.bgColor="none";
+
     var tbody = document.getElementById("tbody");
     tbody.setAttribute("label", result.id);
+    tbody.setAttribute("class", "pointerClass");
 
     var row = `<tr onclick="openDraftMail('${result.message.id}','${result.id}')">
     <td>${getHeader(result.message.payload.headers, "To")}</td>
@@ -194,6 +205,9 @@ function constructDraftData(result) {
 }
 
 function constructSentData(result) {
+    loader.style.display = "none";
+    document.body.bgColor="none";
+
     var tbody = document.getElementById("tbody");
 
     var row = `<tr>
@@ -205,6 +219,7 @@ function constructSentData(result) {
 }
 
 function constructNoData(result) {
+    loader.style.display = "none";
     var tbody = document.getElementById("tbody");
 
     var row = `<tr">
