@@ -1,4 +1,5 @@
 Build command to run this file in your local machine
+npm install
 node app.js
 
 Created web-server using express.js 
